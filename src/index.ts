@@ -3,15 +3,15 @@ import type { Font, FontWeight, FontStyle } from "satori";
 import fs from "node:fs/promises";
 import path from "node:path";
 // noinspection ES6UnusedImports
-import {} from "koishi-plugin-vercel-satori-png-service";
+import {} from "koishi-plugin-to-image-service";
 
-const serviceName = "vercelSatoriPngServiceFontJetbrainsMono";
+const serviceName = "toImageServiceFontJetbrainsMono";
 
-class VercelSatoriPngServiceFontJetbrainsMono extends Service {
+class ToImageServiceFontJetbrainsMono extends Service {
   private _ctx: Context;
   constructor(
     ctx: Context,
-    config: VercelSatoriPngServiceFontJetbrainsMono.Config,
+    config: ToImageServiceFontJetbrainsMono.Config,
   ) {
     super(ctx, serviceName);
     this._ctx = ctx;
@@ -38,7 +38,7 @@ class VercelSatoriPngServiceFontJetbrainsMono extends Service {
         });
       }
     }
-    this._ctx.vercelSatoriPngService.addFont(fonts);
+    this._ctx.toImageService.addFont(fonts);
   }
 
   private fontNames: string[] = [
@@ -53,12 +53,12 @@ class VercelSatoriPngServiceFontJetbrainsMono extends Service {
   ];
 }
 
-namespace VercelSatoriPngServiceFontJetbrainsMono {
-  export const inject = ["vercelSatoriPngService"];
+namespace ToImageServiceFontJetbrainsMono {
+  export const inject = ["toImageService"];
 
   export const usage =
     '<a target="_blank" href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a>';
   export interface Config {}
   export const Config: Schema<Config> = Schema.object({});
 }
-export default VercelSatoriPngServiceFontJetbrainsMono;
+export default ToImageServiceFontJetbrainsMono;
