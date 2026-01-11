@@ -1,18 +1,13 @@
 import { Context, Schema, Service } from "koishi";
-import type { Font, FontWeight, FontStyle } from "satori";
 import fs from "node:fs/promises";
 import path from "node:path";
-// noinspection ES6UnusedImports
-import {} from "koishi-plugin-to-image-service";
+import { Font, FontWeight, FontStyle } from "koishi-plugin-to-image-service";
 
 const serviceName = "toImageServiceFontJetbrainsMono";
 
 class ToImageServiceFontJetbrainsMono extends Service {
   private _ctx: Context;
-  constructor(
-    ctx: Context,
-    config: ToImageServiceFontJetbrainsMono.Config,
-  ) {
+  constructor(ctx: Context, config: ToImageServiceFontJetbrainsMono.Config) {
     super(ctx, serviceName);
     this._ctx = ctx;
   }
@@ -35,6 +30,7 @@ class ToImageServiceFontJetbrainsMono extends Service {
               `../fonts/JetBrainsMonoNL-${j === 0 || fontName !== "Regular" ? fontName : ""}${["", "Italic"][j]}.ttf`,
             ),
           ),
+          supports: ["satori"],
         });
       }
     }
